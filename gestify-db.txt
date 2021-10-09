@@ -1,0 +1,14 @@
+Host
+ec2-34-233-105-94.compute-1.amazonaws.com
+Database
+dd0ouo0ob49g7r
+User
+ikpklwmnkokjcv
+Port
+5432
+Password
+411c72f4f303e6255e74ce2994c521958cf75918b64494c59bc5b4e9ecf5d482
+URI
+postgres://ikpklwmnkokjcv:411c72f4f303e6255e74ce2994c521958cf75918b64494c59bc5b4e9ecf5d482@ec2-34-233-105-94.compute-1.amazonaws.com:5432/dd0ouo0ob49g7r
+Heroku CLI
+heroku pg:psql postgresql-graceful-35880 --app gestify-db
