@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Andres\OneDrive - Universidad de Cundinamarca\Documentos\Actividades Practicas Ciclo3\Gestify\gestify-back\gestify-virtual
+set VIRTUAL_ENV=C:\Users\Kari\Documents\gestify\gestify-1\gestify-back\gestify-virtual
 
 if not defined PROMPT set PROMPT=$P$G
 

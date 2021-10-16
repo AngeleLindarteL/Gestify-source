@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields.related import ForeignKey
 from .user import User
 from .proveedor import Proveedor 
 
@@ -15,7 +16,7 @@ categorias=(
 class Producto(models.Model):
     code = models.CharField('Code', max_length = 8 ,primary_key=True)
     user = models.ForeignKey(User, related_name='producto', on_delete=models.CASCADE)
-    prov_name = models.ForeignKey(Proveedor, on_delete=models.CASCADE )
+    prov_name = models.ForeignKey(Proveedor,on_delete=models.CASCADE)
     p_name = models.CharField('Product_name', max_length=40)
     quantity = models.IntegerField()
     movement= models.CharField('entry/exit', max_length=10)

@@ -1,4 +1,4 @@
-#!c:\users\andres\onedrive - universidad de cundinamarca\documentos\actividades practicas ciclo3\gestify\gestify-back\gestify-virtual\scripts\python.exe
+#!c:\users\kari\documents\gestify\gestify-1\gestify-back\gestify-virtual\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
