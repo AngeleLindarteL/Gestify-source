@@ -1,0 +1,18 @@
+:root {
+    --gradient-primary: linear-gradient(150deg, #8E2DE2 0%, #4A00E0 74%);
+    --gradient-secondary: linear-gradient(150deg, #0CEBEB 0%, #20E3B2 60%, #29FFC6 100%);
+    --primary: #00249b;
+    --light-primary: #99b1ff;
+    --medium-primary: #3363ff;
+    --dark-primary: #000a29;
+    --ges-purple: #480d8c;
+    --ges-light-purple: #c9a2f6;
+    --ges-medium-purple: #7816e9;
+    --ges-dark-purple: #18042f;
+    --ges-gray: #666666;
+    --ges-light-gray: #b3b3b3;
+    --ges-dark-gray: #4d4d4d;
+    --ges-red: #d50000;
+    --ges-dark-red: #600;
+    --ges-red-opacity: #d600008f;
+}

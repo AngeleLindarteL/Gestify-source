@@ -1,0 +1,107 @@
+button {
+    display: inline-flex;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 8px 16px;
+    font-size: var(--font-size-1);
+    line-height: 1.5;
+    border-radius: 6px;
+    margin: 0 0 16px 16px;
+    white-space: nowrap;
+    width: fit-content;
+    transition: var(--btn-transition);
+    text-decoration: none;
+    border: none;
+}
+
+button:first-child,
+button:last-child {
+    margin-right: 0;
+}
+
+button:first-child,
+button:first-of-type {
+    margin-left: 0;
+}
+
+button svg {
+    margin-right: 10px;
+}
+
+.primary-btn {
+    background: var(--gradient-primary);
+    background-color: var(--ges-purple);
+    color: white;
+}
+
+.primary-btn:hover {
+    background: var(--ges-dark-purple);
+    color: white;
+    box-shadow: 0 0 6px 2px var(--ges-light-purple);
+    cursor: pointer;
+}
+
+.primary-btn:disabled,
+.cancel-btn:disabled {
+    box-shadow: none;
+    background-color: var(--ges-light-gray);
+    color: var(--ges-gray);
+    cursor: inherit;
+}
+
+.primary-btn:disabled:hover {
+    cursor: inherit;
+}
+
+.primary-btn:not(:disabled):not(.disabled):focus,
+.primary-btn:not(:disabled):not(.disabled).focus,
+.primary-btn:focus {
+    box-shadow: 0 0 3px 1px var(--ges-purple);
+    background-color: var(--ges-purple);
+}
+
+.primary-btn:not(:disabled):not(.disabled):active,
+.primary-btn:not(:disabled):not(.disabled).active,
+.primary-btn:active {
+    background-color: var(--ges-purple);
+    box-shadow: 0 0 4px 2px var(--ges-light-purple);
+}
+
+.cancel-btn {
+    background: var(--ges-red-opacity);
+    color: var(--ges-dark-red);
+}
+
+.cancel-btn:hover {
+    background-color: var(--ges-dark-red);
+    color: white;
+    box-shadow: 0 0 6px 2px var(--ges-red-opacity);
+    cursor: pointer;
+}
+
+.cancel-btn:disabled:hover {
+    cursor: inherit;
+}
+
+.cancel-btn:not(:disabled):not(.disabled):focus,
+.cancel-btn:not(:disabled):not(.disabled).focus,
+.cancel-btn:focus {
+    box-shadow: 0 0 3px 1px var(--ges-red);
+    background-color: var(--ges-red);
+}
+
+.cancel-btn:not(:disabled):not(.disabled):active,
+.cancel-btn:not(:disabled):not(.disabled).active,
+.cancel-btn:active {
+    background-color: var(--ges-red);
+    box-shadow: 0 0 4px 2px var(--ges-red-opacity);
+}
+
+.custom-home-btn {
+    font-size: var(--font-size-4);
+}
