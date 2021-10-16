@@ -1,6 +1,6 @@
 :root {
     --gradient-primary: linear-gradient(150deg, #8E2DE2 0%, #4A00E0 74%);
-    --gradient-secondary: linear-gradient(150deg, #0CEBEB 0%, #20E3B2 60%, #29FFC6 100%);
+    --gradient-secondary: linear-gradient(150deg, #0CEBEB 0%, #23e7b6 50%, #29FFC6 100%);
     --primary: #00249b;
     --light-primary: #99b1ff;
     --medium-primary: #3363ff;

@@ -71,15 +71,6 @@
     text-decoration: none;
 }
 
-.header-back-button__link::before {
-    content: "\e5c4";
-    font-family: "Material Icons";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    margin-right: 4px;
-}
-
 .register-form .input-container {
     max-width: 300px;
 }

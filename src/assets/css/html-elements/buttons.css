@@ -1,5 +1,7 @@
-button {
+button,
+.header-back-button__link {
     display: inline-flex;
+    align-items: center;
     font-weight: 400;
     text-align: center;
     vertical-align: middle;
@@ -29,6 +31,7 @@ button:first-of-type {
     margin-left: 0;
 }
 
+.header-back-button__link svg,
 button svg {
     margin-right: 10px;
 }
@@ -104,4 +107,39 @@ button svg {
 
 .custom-home-btn {
     font-size: var(--font-size-4);
+}
+
+.header-back-button__link {
+    background: white;
+    color: var(--primary);
+    padding: 5px;
+    margin: 0 16px 0 0;
+    border-radius: 25px;
+    height: 36px;
+}
+
+.header-back-button__link:hover {
+    background-color: white;
+    color: var(--ges-dark-purple);
+    box-shadow: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.header-back-button__link:disabled:hover {
+    cursor: inherit;
+}
+
+.header-back-button__link:not(:disabled):not(.disabled):focus,
+.header-back-button__link:not(:disabled):not(.disabled).focus,
+.header-back-button__link:focus {
+    box-shadow: 0 0 3px 1px var(--ges-light-purple);
+    background-color: white;
+}
+
+.header-back-button__link:not(:disabled):not(.disabled):active,
+.header-back-button__link:not(:disabled):not(.disabled).active,
+.header-back-button__link:active {
+    background-color: white;
+    box-shadow: none;
 }

@@ -3,8 +3,14 @@
     <div class="login-form-container">
       <div class="bg-login"></div>
       <div class="white-container">
+        <div class="header-back-button">
+          <router-link to="/" class="header-back-button__link">
+            <ges-icon icon="chevron-left" />
+            VOLVER
+          </router-link>
+          <h1 class="form-title form-title--login">Inicio de sesión</h1>
+        </div>
         <form class="login-form">
-          <h1 class="form-title">Inicio de sesión</h1>
           <div class="input-container">
             <label for="email" class="input-container__label"
               >Correo electrónico</label
