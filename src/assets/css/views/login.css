@@ -4,9 +4,6 @@
     background: var(--gradient-secondary);
     border-radius: 16px 0 0 16px;
     box-shadow: var(--shadow-3);
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
 }
 
 .bg-login::after {

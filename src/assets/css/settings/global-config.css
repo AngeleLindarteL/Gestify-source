@@ -10,3 +10,25 @@
     width: 80%;
     margin: 0 auto;
 }
+
+
+/* -- SCROLLBAR --*/
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ges-lighteen-gray);
+    background-color: var(--ges-lighteen-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ges-gray);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ges-dark-gray);
+}

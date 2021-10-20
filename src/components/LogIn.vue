@@ -33,7 +33,7 @@
               id="pass"
             />
           </div>
-          <button type="submit" class="primary-btn">Iniciar sesión</button>
+          <button type="submit" class="primary-btn" v-on:click="sendToDashboard">Iniciar sesión</button>
         </form>
         <div class="bottom-actions">
           <p>
@@ -50,5 +50,10 @@
 <script>
 export default {
   name: "logIn",
+  methods: {
+    sendToDashboard: function () {
+      this.$router.push({ name: "mainLayout" });
+    },
+  },
 };
 </script>

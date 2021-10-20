@@ -75,6 +75,10 @@ button svg {
     box-shadow: 0 0 4px 2px var(--ges-light-purple);
 }
 
+.primary-btn--margin {
+    margin-left: 16px !important;
+}
+
 .cancel-btn {
     background: var(--ges-red-opacity);
     color: var(--ges-dark-red);

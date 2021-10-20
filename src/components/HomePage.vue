@@ -42,9 +42,6 @@
         </section>
       </div>
     </div>
-    <!-- <div class="main-component">
-      <router-view> </router-view>
-    </div> -->
     <div class="footer-container">
       <footer class="footer">
         <div class="footer-content">
