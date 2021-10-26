@@ -64,8 +64,6 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 CORS_ALLOWED_ORIGINS = [
-    "http://192.168.20.24:8080/",
-    "http://localhost",
     "http://localhost",
     "http://localhost:8080",
     "http://127.0.0.1:9000",
