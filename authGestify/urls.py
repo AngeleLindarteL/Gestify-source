@@ -3,9 +3,9 @@ from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshVie
 from authGestifyApp import views
 
 urlpatterns = [
-    path('login/', TokenObtainPairView.as_view()),
-    path('refresh/', TokenRefreshView.as_view()),
-    path('user/', views.UserCreateView.as_view()),
+    path('login', TokenObtainPairView.as_view()),
+    path('refresh', TokenRefreshView.as_view()),
+    path('user', views.UserCreateView.as_view()),
     path('user/<int:pk>', views.UserDetailView.as_view()),
     path('user/<int:pk>/products', views.ProductView.as_view()),
     path('user/<int:pk>/providers', views.ProviderView.as_view()),
