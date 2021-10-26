@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-rtswk3lfns)fvvtc#5zlbt9thv_ycr9$wei%)1sia&lfd#f_$%
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -40,19 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'authGestifyApp',
-    
-    
+    'corsheaders',
 ]
 
 SIMPLE_JWT = {
-            'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-            'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
-            'ROTATE_REFRESH_TOKENS': False,
-            'BLACKLIST_AFTER_ROTATION': True,
-            'UPDATE_LAST_LOGIN': False,
-            'ALGORITHM': 'HS256',
-            'USER_ID_FIELD': 'id',
-            'USER_ID_CLAIM': 'user_id',
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+    'ALGORITHM': 'HS256',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
 }
 
 MIDDLEWARE = [
@@ -63,8 +62,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
-
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+]
 REST_FRAMEWORK = {
             'DEFAULT_PERMISSION_CLASSES': (
                 'rest_framework.permissions.AllowAny',
