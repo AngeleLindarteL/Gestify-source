@@ -21,6 +21,6 @@ class Producto(models.Model):
     quantity = models.IntegerField()
     movement= models.CharField('entry/exit', max_length=10)
     price = models.CharField('Price', max_length = 15)
-    category = models.CharField(max_length= 10, choices=categorias, default='Des')
+    category = models.CharField(max_length= 10)
     description = models.CharField('Description', max_length = 200)
     
