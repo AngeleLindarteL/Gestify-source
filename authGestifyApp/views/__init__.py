@@ -1,3 +1,4 @@
+from .categoryView import CategoryView
 from .userCreateView import UserCreateView
 from .userDetailView import UserDetailView
 from .productView import ProductView
