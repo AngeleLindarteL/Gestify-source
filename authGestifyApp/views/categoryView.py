@@ -6,6 +6,7 @@ class CategoryView(generics.RetrieveAPIView):
 
     def get(self, request, *args, **kwargs):
         categories =(
+            {"cod" :'Des', "name": "Despensa"},
             {"cod" :'Beb', "name": "Bebidas"},
             {"cod" :'Mas', "name": "Para_Mascotas"},
             {"cod" :'Beb', "name": "Para_Bebés"},
