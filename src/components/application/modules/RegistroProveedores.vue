@@ -1,77 +1,83 @@
 <template>
-  <h1 class="form-title">Registro Proveedores</h1>
-  <form class="global-form-container">
-    <div class="register-form">
-      <div class="input-container">
-        <label for="code" class="input-container__label">Código</label>
-        <input
-          type="text"
-          class="input-container__input"
-          name="code"
-          id="code"
-          required
-        />
+  <div>
+    <h1 class="form-title">Registro Proveedores</h1>
+    <form class="global-form-container" v-on:submit.prevent="createProvider">
+      <div class="register-form">
+        <div class="input-container">
+          <label for="name" class="input-container__label">Nombre</label>
+          <input
+            type="text"
+            class="input-container__input"
+            name="name"
+            id="name"
+            required
+            v-model="provider.p_name"
+          />
+        </div>
+        <div class="input-container">
+          <label for="contactNumber" class="input-container__label"
+            >Número de contacto</label
+          >
+          <input
+            type="text"
+            class="input-container__input"
+            name="contactNumber"
+            id="contactNumber"
+            required
+            v-model="provider.p_telephone"
+          />
+        </div>
+        <div class="input-container">
+          <label for="email" class="input-container__label"
+            >Correo electrónico</label
+          >
+          <input
+            type="email"
+            class="input-container__input"
+            name="email"
+            id="email"
+            required
+            v-model="provider.p_email"
+          />
+        </div>
       </div>
-      <div class="input-container">
-        <label for="name" class="input-container__label">Nombre</label>
-        <input
-          type="text"
-          class="input-container__input"
-          name="name"
-          id="name"
-          required
-        />
-      </div>
-      <div class="input-container">
-        <label for="contactNumber" class="input-container__label"
-          >Número de contacto</label
-        >
-        <input
-          type="text"
-          class="input-container__input"
-          name="contactNumber"
-          id="contactNumber"
-          required
-        />
-      </div>
-      <div class="input-container">
-        <label for="email" class="input-container__label"
-          >Correo electrónico</label
-        >
-        <input
-          type="email"
-          class="input-container__input"
-          name="email"
-          id="email"
-          required
-        />
-      </div>
-      <div class="input-container">
-        <label for="due" class="input-container__label">Saldo pendiente</label>
-        <input
-          type="number"
-          class="input-container__input"
-          name="due"
-          id="due"
-          required
-        />
-      </div>
-      <div class="input-container">
-        <label for="product" class="input-container__label">Producto</label>
-        <input
-          type="text"
-          class="input-container__input"
-          name="product"
-          id="product"
-          required
-        />
-      </div>
-    </div>
-    <button class="primary-btn primary-btn--margin" type="submit">Registrar proveedor</button>
-  </form>
+      <button class="primary-btn primary-btn--margin" type="submit" v-on:click="hola">
+        Registrar proveedor
+      </button>
+    </form>
+  </div>
 </template>
 <script>
+import axios from "axios";
+import jwt_decode from "jwt-decode";
 export default {
   name: "registroProveedores",
+  data: function () {
+    return {
+      provider: {
+        p_name: "",
+        p_telephone: "",
+        p_email: "",
+      },
+    };
+  },
+  methods: {
+    createProvider: function () {
+      alert("hola");
+      let userToken = localStorage.getItem("token_access");
+      let userId = jwt_decode(userToken).user_id.toString();
+
+      axios.post(`https://gestify-be.herokuapp.com/user/${userId}/providers`, this.provider, {
+        headers: { Authorization: `Bearer ${userToken}` },
+      }).then((result) => {
+        console.log(result);
+        alert("Proveedor creado con éxito")
+      }).catch((error) => {
+        console.log(error);
+        alert("Falló creación de proveedor")
+      });
+    },
+
+  },
 };
 </script>

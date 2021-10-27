@@ -21,7 +21,8 @@
 
 .nav {
     align-items: flex-end;
-    padding: 16px 0 10px 0;
+    padding: 16px 0 0 0;
+    margin-bottom: 24px;
 }
 
 .nav button {
@@ -42,7 +43,8 @@
 }
 
 .welcome-img {
-    max-width: 450px;
+    max-width: 600px;
+    min-width: 420px;
 }
 
 .modules-title {

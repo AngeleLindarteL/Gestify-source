@@ -10,16 +10,17 @@
           </router-link>
           <h1 class="form-title form-title--login">Inicio de sesión</h1>
         </div>
-        <form class="login-form">
+        <form class="login-form" v-on:submit.prevent="sendToDashboard">
           <div class="input-container">
-            <label for="email" class="input-container__label"
-              >Correo electrónico</label
+            <label for="username" class="input-container__label"
+              >Nombre de usuario</label
             >
             <input
-              type="email"
+              type="username"
               class="input-container__input"
-              name="email"
-              id="email"
+              name="username"
+              id="username"
+              v-model="user.username"
             />
           </div>
           <div class="input-container">
@@ -31,15 +32,15 @@
               class="input-container__input"
               name="password"
               id="pass"
+              v-model="user.password"
             />
           </div>
-          <button type="submit" class="primary-btn" v-on:click="sendToDashboard">Iniciar sesión</button>
+          <button type="submit" class="primary-btn">Iniciar sesión</button>
         </form>
         <div class="bottom-actions">
           <p>
-            <a href="#" class="bottom-actions__link"
-              >¿Olvidaste la contraseña?</a
-            >
+          ¿Aún no eres usuario?
+          <router-link to="/user/signup" class="bottom-actions__link">Regístrate</router-link>
           </p>
         </div>
       </div>
@@ -48,11 +49,36 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "logIn",
+  data: function () {
+    return {
+      user: {
+        username: "",
+        password: "",
+      },
+    };
+  },
   methods: {
     sendToDashboard: function () {
-      this.$router.push({ name: "mainLayout" });
+      axios
+        .post("https://gestify-be.herokuapp.com/login", this.user, {
+          headers: {},
+        })
+        .then((result) => {
+          let dataLogIn = {
+            username: this.user.username,
+            token_access: result.data.access,
+            token_refresh: result.data.refresh,
+          };
+          this.$emit("logInSuccess", dataLogIn);
+          this.$router.push({ name: "mainLayout", });
+        })
+        .catch((error) => {
+          if (error.response.status == "401")
+            alert("Verifica tus credenciales para continuar");
+        });
     },
   },
 };

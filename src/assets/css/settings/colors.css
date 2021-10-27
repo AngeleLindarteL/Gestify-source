@@ -1,10 +1,12 @@
 :root {
     --gradient-primary: linear-gradient(150deg, #8E2DE2 0%, #4A00E0 74%);
     --gradient-secondary: linear-gradient(150deg, #0CEBEB 0%, #23e7b6 50%, #29FFC6 100%);
+    --light-gradient: linear-gradient(90deg, #8DE7FF 0%, #B7FFF5 100%);
     --primary: #00249b;
     --light-primary: #99b1ff;
     --medium-primary: #3363ff;
     --dark-primary: #000a29;
+    --primary-opacity: #62c0ff48;
     --ges-purple: #480d8c;
     --ges-lighteen-purple: #f2e8fd;
     --ges-light-purple: #c9a2f6;

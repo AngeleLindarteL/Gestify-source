@@ -19,6 +19,7 @@ button,
     transition: var(--btn-transition);
     text-decoration: none;
     border: none;
+    cursor: pointer;
 }
 
 button:first-child,

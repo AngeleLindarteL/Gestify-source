@@ -85,3 +85,7 @@ h1 {
     margin-bottom: 0.5rem;
     line-height: 1.2;
 }
+
+a {
+    color: var(--ges-purple);
+}

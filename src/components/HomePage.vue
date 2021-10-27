@@ -17,13 +17,13 @@
               Consulta, Edita y añade todo lo relacionado al inventario de tu
               negocio. A través de un único sistema, Gestify.
             </p>
-            <button class="primary-btn custom-home-btn">
-              Quiero saber más
+            <button class="primary-btn custom-home-btn" v-on:click="sendToSignUp">
+              Registrarme
             </button>
           </article>
           <img
             class="welcome-img"
-            src="../assets/img/img-home.png"
+            src="../assets/img/img-home.svg"
             alt="user-inventory"
           />
         </section>
@@ -64,17 +64,12 @@ export default {
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
         },
         {
-          title: "Categorías",
+          title: "Usuarios",
           description:
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
         },
         {
           title: "Productos",
-          description:
-            "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
-        },
-        {
-          title: "Inventario",
           description:
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et",
         },
@@ -84,6 +79,9 @@ export default {
   methods: {
     sendToLogIn: function () {
       this.$router.push({ name: "logIn" });
+    },
+      sendToSignUp: function () {
+      this.$router.push({ name: "signUp" });
     },
   },
 };

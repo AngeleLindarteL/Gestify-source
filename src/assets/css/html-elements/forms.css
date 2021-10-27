@@ -1,3 +1,8 @@
+.register-form-container,
+.login-form-container {
+    display: flex;
+}
+
 .center-content-column,
 .input-container,
 .white-container form {

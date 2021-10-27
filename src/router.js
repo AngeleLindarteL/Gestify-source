@@ -2,11 +2,14 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import App from "./App.vue"
 import LogIn from "./components/LogIn.vue"
 import HomePage from "./components/HomePage.vue"
+import SignUp from "./components/SignUp.vue"
 import MainLayout from "./components/application/MainLayout.vue"
 import RegistroProveedores from "./components/application/modules/RegistroProveedores.vue"
 import ConsultaProveedores from "./components/application/modules/ConsultaProveedores.vue"
 import RegistroInventario from "./components/application/modules/RegistroInventario.vue"
-import ConsultaInventario from "./components/application/modules/ConsultaInventario.vue"
+import ConsultaProductos from "./components/application/modules/ConsultaProductos.vue"
+import RegistroUsuarios from "./components/application/modules/RegistroUsuarios.vue"
+import ConsultaUsuarios from "./components/application/modules/ConsultaUsuarios.vue"
 
 const routes = [{
         path: '/',
@@ -19,10 +22,23 @@ const routes = [{
         component: LogIn
     },
     {
+        path: '/user/signup',
+        name: 'signUp',
+        component: SignUp
+    },
+    {
         path: '/dashboard',
         name: 'mainLayout',
         component: MainLayout,
         children: [{
+                path: 'registro-productos',
+                component: RegistroInventario,
+            },
+            {
+                path: 'consulta-productos',
+                component: ConsultaProductos,
+            },
+            {
                 path: 'registro-proveedores',
                 component: RegistroProveedores,
             },
@@ -31,20 +47,15 @@ const routes = [{
                 component: ConsultaProveedores,
             },
             {
-                path: 'registro-inventario',
-                component: RegistroInventario,
+                path: 'registro-usuarios',
+                component: RegistroUsuarios,
             },
             {
-                path: 'consulta-inventario',
-                component: ConsultaInventario,
+                path: 'consultar-usuarios',
+                component: ConsultaUsuarios,
             },
         ],
     },
-    // {
-    //     path: '/userauth/registro-proveedores',
-    //     name: 'registroProveedores',
-    //     component: RegistroProveedores
-    // }
 ]
 
 const router = createRouter({

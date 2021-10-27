@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Consulta de proveedores</h1>
+    <h1>Consulta de Productos</h1>
     <form action="" class="register-form">
       <div class="input-container">
         <label for="search" class="input-container__label">Buscar</label>
@@ -17,17 +17,23 @@
     <table class="table">
       <thead>
         <tr class="table__header">
+          <th class="table__header-item">Código</th>
           <th class="table__header-item">Nombre</th>
-          <th class="table__header-item">Contacto</th>
-          <th class="table__header-item">Correo electrónico</th>
+          <th class="table__header-item">Stock</th>
+          <th class="table__header-item">Proveedor</th>
+          <th class="table__header-item">Categoría</th>
+          <th class="table__header-item">Costo unitario</th>
           <th class="table__header-item">Acciones</th>
         </tr>
       </thead>
       <tbody class="table__body">
-        <tr v-for="provider in userProviders" :key="provider">
-          <td class="table__body-item">{{ provider.p_name }}</td>
-          <td class="table__body-item">{{ provider.p_telephone }}</td>
-          <td class="table__body-item">{{ provider.email }}</td>
+        <tr v-for="product in userProducts" :key="product">
+          <td class="table__body-item">{{product.code}}</td>
+          <td class="table__body-item">{{product.p_name}}</td>
+          <td class="table__body-item">{{product.quantity}}</td>
+          <td class="table__body-item">{{product.prov_name}}</td>
+          <td class="table__body-item">{{product.category}}</td>
+          <td class="table__body-item">{{product.price}}</td>
           <td class="table__body-item">
             <ges-icon icon="trash-alt"></ges-icon>
             <ges-icon icon="edit"></ges-icon>
@@ -40,29 +46,39 @@
 <script>
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+
 export default {
-  name: "consultaProveedores",
+  name: "consultaProductos",
   data: function () {
     return {
-      provider: {
+      product: {
+        code: "",
+        prov_name: "",
         p_name: "",
-        p_telephone: "",
-        p_email: "",
+        quantity: "",
+        movement: "Entrada",
+        price: "",
+        category: "",
+        description: "",
       },
-      userProviders: [],
+      userProducts: [],
     };
   },
   methods: {
-    getUserProviders: function () {
+    getUserProducts: function () {
       let userToken = localStorage.getItem("token_access");
       let userId = jwt_decode(userToken).user_id.toString();
       axios
-        .get(`https://gestify-be.herokuapp.com/user/${userId}/providers`, {
-          headers: { Authorization: `Bearer ${userToken}` },
-        })
+        .get(
+          `https://gestify-be.herokuapp.com/user/${userId}/products`,
+          {
+            headers: { Authorization: `Bearer ${userToken}` },
+          }
+        )
         .then((result) => {
           console.log(result);
-          this.userProviders = result.data;
+          this.userProducts = result.data;
+          console.log(this.userProducts);
         })
         .catch((error) => {
           console.log(error);
@@ -70,7 +86,7 @@ export default {
     },
   },
   beforeMount() {
-    this.getUserProviders();
+    this.getUserProducts();
   },
 };
 </script>
