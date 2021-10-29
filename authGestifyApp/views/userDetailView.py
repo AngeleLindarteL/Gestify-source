@@ -19,3 +19,19 @@ class UserDetailView(generics.RetrieveAPIView):
             stringResponse = {'detail':'Unauthorized Request'}
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
         return super().get(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        token = request.META.get('HTTP_AUTHORIZATION')[7:]
+        tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
+        valid_data = tokenBackend.decode(token,verify=False)
+
+        if valid_data['user_id'] != self.kwargs['pk']:
+            stringResponse = {'detail':'Unauthorized Request'}
+            return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
+        
+        # request.data["user"] = int(User.objects.get(id=self.kwargs["pk"]).id)
+        exinstance = User.objects.get(id=self.kwargs["pk"])
+        request.data["id"] = self.kwargs["pk"]
+        UserSerializer.update(UserSerializer,exinstance,request.data)
+
+        return Response(status=status.HTTP_201_CREATED)
