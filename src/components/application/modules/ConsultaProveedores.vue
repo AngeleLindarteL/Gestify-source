@@ -33,10 +33,17 @@
               <button class="edit-btn" @click="openEditProviderModal(index)">
                 <ges-icon icon="edit" size="lg"></ges-icon>
               </button>
-              <button
+              <!-- <button
                 type="button"
                 class="close-btn"
                 @click="deleteProvider(provider.p_name)"
+              >
+                <ges-icon size="lg" icon="trash-alt"></ges-icon>
+              </button> -->
+              <button
+                type="button"
+                class="close-btn"
+                @click="openConfirmationModal(index)"
               >
                 <ges-icon size="lg" icon="trash-alt"></ges-icon>
               </button>
@@ -51,16 +58,24 @@
       v-bind="editProvider"
     >
     </ModalEditProvider>
+    <ConfirmationModal
+      v-show="isConfirmationModalVisible"
+      @close="closeConfirmationModal"
+      @delete-item="deleteProvider"
+      :idItem="deleteProviderId"
+    ></ConfirmationModal>
   </div>
 </template>
 <script>
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import ModalEditProvider from "../modals/ModalEditProvider.vue";
+import ConfirmationModal from "../modals/ConfirmationModal.vue";
 export default {
   name: "consultaProveedores",
   components: {
     ModalEditProvider,
+    ConfirmationModal,
   },
   data: function () {
     return {
@@ -72,6 +87,8 @@ export default {
       userProviders: [],
       editProvider: {},
       isModalVisible: false,
+      isConfirmationModalVisible: false,
+      deleteProviderId: {},
     };
   },
   methods: {
@@ -95,12 +112,22 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+      this.getUserProviders()
+    },
+
+    closeConfirmationModal() {
+      this.isConfirmationModalVisible = false;
+    },
+
+    openConfirmationModal(providerId) {
+      this.isConfirmationModalVisible = true;
+      this.deleteProviderId = providerId;
     },
 
     deleteProvider(providerCodeDelete) {
       let userToken = localStorage.getItem("token_access");
       let userId = jwt_decode(userToken).user_id.toString();
-      let providerId = providerCodeDelete.toString();
+      let providerId = this.userProviders[providerCodeDelete].p_name;
       axios
         .delete(
           `https://gestify-be.herokuapp.com/user/${userId}/providers/${providerId}`,
@@ -110,7 +137,8 @@ export default {
         )
         .then((result) => {
           alert("Proveedor eliminado con éxito");
-          this.$router.go();
+          this.getUserProviders();
+          this.closeModal();
         })
         .catch((error) => {
           console.log(error);

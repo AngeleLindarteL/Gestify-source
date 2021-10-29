@@ -44,6 +44,19 @@
     border-radius: 4px 4px 0 0;
 }
 
+.modal-header--delete {
+    background-color: var(--ges-red);
+    background: var(--red-gradient);
+}
+
+.modal-header--delete,
+.modal-header--delete .close-btn,
+.modal-header--delete .close-btn:hover,
+.modal-header--delete .close-btn:active,
+.modal-header--delete .close-btn:focus {
+    color: white !important;
+}
+
 .modal-footer {
     border-top: 1px solid var(--ges-light-gray);
 }
@@ -64,4 +77,16 @@
 .modal-fade-enter-active,
 .modal-fade-leave-active {
     transition: var(--basic-transition);
+}
+
+.modal-body {
+    padding: 24px 32px;
+}
+
+.modal-container--delete .buttons-container {
+    justify-content: flex-start;
+}
+
+.modal-container--delete .buttons-container button:first-child {
+    margin-left: 0 !important;
 }

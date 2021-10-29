@@ -46,7 +46,7 @@
               <button
                 type="button"
                 class="close-btn"
-                @click="deleteProduct(product.code)"
+                @click="openConfirmationModal(index)"
               >
                 <ges-icon size="lg" icon="trash-alt"></ges-icon>
               </button>
@@ -61,17 +61,25 @@
       v-bind="editProduct"
     >
     </ModalEditProduct>
+    <ConfirmationModal
+      v-show="isConfirmationModalVisible"
+      @close="closeConfirmationModal"
+      @delete-item="deleteProduct"
+      :idItem="deleteProductId"
+    ></ConfirmationModal>
   </div>
 </template>
 <script>
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import ModalEditProduct from "../modals/ModalEditProduct.vue";
+import ConfirmationModal from "../modals/ConfirmationModal.vue";
 
 export default {
   name: "consultaProductos",
   components: {
     ModalEditProduct,
+    ConfirmationModal,
   },
   data: function () {
     return {
@@ -89,6 +97,8 @@ export default {
       editProduct: {},
       isModalVisible: false,
       filterProductsInput: "",
+      isConfirmationModalVisible: false,
+      deleteProductId: {},
     };
   },
   methods: {
@@ -113,12 +123,22 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+      this.getUserProducts()
+    },
+
+    closeConfirmationModal() {
+      this.isConfirmationModalVisible = false;
+    },
+
+    openConfirmationModal(productId) {
+      this.isConfirmationModalVisible = true;
+      this.deleteProductId = productId;
     },
 
     deleteProduct(productCodeDelete) {
       let userToken = localStorage.getItem("token_access");
       let userId = jwt_decode(userToken).user_id.toString();
-      let productId = productCodeDelete.toString();
+      let productId = this.userProducts[productCodeDelete].code;
       axios
         .delete(
           `https://gestify-be.herokuapp.com/user/${userId}/products/${productId}`,
@@ -128,7 +148,8 @@ export default {
         )
         .then((result) => {
           alert("Producto eliminado con éxito");
-          this.$router.go();
+          this.getUserProducts();
+          this.closeModal();
         })
         .catch((error) => {
           console.log(error);

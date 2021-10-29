@@ -80,15 +80,31 @@
 .bottom-info__name {
     text-transform: uppercase;
     font-weight: 700;
+    margin-bottom: 0;
 }
 
+.bottom-actions-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-info__profile,
 .bottom-info__action {
-    border-radius: 4px;
+    display: block;
     padding: 5px 10px;
     cursor: pointer;
     transition: var(--basic-transition);
+    border-top: 1px solid var(--ges-dark-purple);
 }
 
+.bottom-info__profile {
+    padding: 5px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    border-top: none;
+}
+
+.bottom-info__profile:hover,
 .bottom-info__action:hover {
     background-color: var(--ges-lighteen-gray);
 }

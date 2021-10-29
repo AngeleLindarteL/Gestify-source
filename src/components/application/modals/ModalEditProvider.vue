@@ -63,7 +63,9 @@
             <button class="primary-btn primary-btn--margin" type="submit">
               Actualizar proveedor
             </button>
-            <button class="cancel-btn" v-on:click="close" type="button">Cancelar</button>
+            <button class="cancel-btn" v-on:click="close" type="button">
+              Cancelar
+            </button>
           </div>
         </form>
       </div>
@@ -95,6 +97,21 @@ export default {
       this.$emit("close");
     },
 
+        getUserProviders: function () {
+      let userToken = localStorage.getItem("token_access");
+      let userId = jwt_decode(userToken).user_id.toString();
+      axios
+        .get(`https://gestify-be.herokuapp.com/user/${userId}/providers`, {
+          headers: { Authorization: `Bearer ${userToken}` },
+        })
+        .then((result) => {
+          this.userProviders = result.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
     setDataProduct: function () {
       this.providerUpdated.p_name = this.p_name;
       this.providerUpdated.p_telephone = this.p_telephone;
@@ -115,8 +132,7 @@ export default {
         )
         .then((result) => {
           alert("Proveedor editado con éxito");
-          this.close();
-          this.$router.go();
+          this.$emit('close');
         })
         .catch((error) => {
           console.log(error);

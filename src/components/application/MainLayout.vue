@@ -28,15 +28,19 @@
         </div>
         <div class="sidenav-bottom-info">
           <p class="bottom-info__name">{{ name }}</p>
-          <a class="bottom-info__action" v-on:click="logOut">
-            <ges-icon icon="sign-out-alt"></ges-icon> Cerrar sesión</a
-          >
+          <div class="bottom-actions-container">
+            <router-link to="/user/profile" class="bottom-info__profile"
+              >Ver mi perfil</router-link
+            >
+            <a class="bottom-info__action" v-on:click="logOut">
+              <ges-icon icon="sign-out-alt"></ges-icon> Cerrar sesión</a
+            >
+          </div>
         </div>
       </div>
     </nav>
     <div class="main-content">
       <div class="main-component">
-        Bienvenido {{name}}
         <router-view> </router-view>
       </div>
     </div>
@@ -94,7 +98,6 @@ export default {
       name: "",
       email: "",
       username: "",
-      isModalVisible: false,
       is_auth: Boolean,
     };
   },
@@ -162,7 +165,7 @@ export default {
 
   beforeMount() {
     this.getUserData();
-    this.verifyAuth()
+    this.verifyAuth();
   },
 };
 </script>

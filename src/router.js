@@ -8,8 +8,7 @@ import RegistroProveedores from "./components/application/modules/RegistroProvee
 import ConsultaProveedores from "./components/application/modules/ConsultaProveedores.vue"
 import RegistroInventario from "./components/application/modules/RegistroInventario.vue"
 import ConsultaProductos from "./components/application/modules/ConsultaProductos.vue"
-import RegistroUsuarios from "./components/application/modules/RegistroUsuarios.vue"
-import ConsultaUsuarios from "./components/application/modules/ConsultaUsuarios.vue"
+import Profile from "./components/application/modules/Profile.vue"
 
 const routes = [{
         path: '/',
@@ -47,13 +46,9 @@ const routes = [{
                 component: ConsultaProveedores,
             },
             {
-                path: 'registro-usuarios',
-                component: RegistroUsuarios,
-            },
-            {
-                path: 'consultar-usuarios',
-                component: ConsultaUsuarios,
-            },
+                path: '/user/profile',
+                component: Profile
+            }
         ],
     },
 ]

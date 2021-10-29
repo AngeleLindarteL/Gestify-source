@@ -235,8 +235,7 @@ export default {
         .then((result) => {
           console.log(result)
           alert("Producto actualizado con éxito");
-          this.close()
-          this.$router.go()
+          this.$emit('close')
         })
         .catch((error) => {
           console.log(error)
