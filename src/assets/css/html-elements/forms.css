@@ -96,6 +96,10 @@
     margin: 16px 16px 5px 16px;
 }
 
+.edit-form {
+    justify-content: center;
+}
+
 .double-input {
     display: flex;
 }
@@ -111,4 +115,25 @@
 
 .double-input .input-container__input:last-child {
     border-radius: 0 4px 4px 0;
+}
+
+.input-container__input:disabled {
+    background-color: var(--ges-lighteen-gray);
+    color: var(--ges-dark-gray);
+    border-color: var(--ges-lighteen-purple);
+}
+
+.search-form {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-form div {
+    display: flex;
+}
+
+.input-container--search,
+.input-container--search .input-container__input {
+    max-width: 400px;
+    min-width: 400px;
 }

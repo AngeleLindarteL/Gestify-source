@@ -132,7 +132,6 @@ export default {
         .get("https://gestify-be.herokuapp.com/categories", {})
         .then((categories) => {
           this.categories = categories.data;
-          console.log(this.categories)
         })
         .catch((error) => {
           console.log(error);
@@ -150,7 +149,6 @@ export default {
         });
     },
     createProduct: function () {
-      console.log("Mi catgoría es:" + this.product.category);
       let userToken = localStorage.getItem("token_access");
       let userId = jwt_decode(userToken).user_id.toString();
       axios
@@ -162,13 +160,23 @@ export default {
           }
         )
         .then((result) => {
-          console.log(result);
           alert("Producto creado con éxito");
+          this.clearData()
         })
         .catch((error) => {
           console.log(error);
           alert("Falló registro de producto");
         });
+    },
+    clearData: function () {
+      this.product.code = "";
+      this.product.prov_name = "";
+      this.product.p_name = "";
+      this.product.quantity = "";
+      this.product.movement = "";
+      this.product.price = "";
+      this.product.category = "";
+      this.product.description = "";
     },
   },
   beforeMount() {

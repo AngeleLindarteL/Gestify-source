@@ -41,7 +41,7 @@
           />
         </div>
       </div>
-      <button class="primary-btn primary-btn--margin" type="submit" v-on:click="hola">
+      <button class="primary-btn primary-btn--margin" type="submit">
         Registrar proveedor
       </button>
     </form>
@@ -63,20 +63,25 @@ export default {
   },
   methods: {
     createProvider: function () {
-      alert("hola");
       let userToken = localStorage.getItem("token_access");
       let userId = jwt_decode(userToken).user_id.toString();
 
       axios.post(`https://gestify-be.herokuapp.com/user/${userId}/providers`, this.provider, {
         headers: { Authorization: `Bearer ${userToken}` },
       }).then((result) => {
-        console.log(result);
         alert("Proveedor creado con éxito")
+        this.clearData()
       }).catch((error) => {
         console.log(error);
         alert("Falló creación de proveedor")
       });
     },
+
+    clearData: function () {
+      this.provider.p_name = "";
+      this.provider.p_telephone = "";
+      this.provider.p_email = "";
+    }
 
   },
 };

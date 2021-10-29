@@ -1,4 +1,4 @@
-<template>
+<template v-if="is_auth">
   <div class="main-layout">
     <nav class="sidenav">
       <div class="sidenav-content">
@@ -28,12 +28,15 @@
         </div>
         <div class="sidenav-bottom-info">
           <p class="bottom-info__name">{{ name }}</p>
-          <a class="bottom-info__action" v-on:click="logOut"> <ges-icon icon="sign-out-alt"></ges-icon> Cerrar sesión</a>
+          <a class="bottom-info__action" v-on:click="logOut">
+            <ges-icon icon="sign-out-alt"></ges-icon> Cerrar sesión</a
+          >
         </div>
       </div>
     </nav>
     <div class="main-content">
       <div class="main-component">
+        Bienvenido {{name}}
         <router-view> </router-view>
       </div>
     </div>
@@ -73,31 +76,31 @@ export default {
             },
           ],
         },
-        {
-          title: "Usuarios",
-          children: [
-            {
-              name: "Registrar nuevo usuario",
-              url: "/dashboard/registro-usuarios",
-            },
-            {
-              name: "Usuarios del sistema",
-              url: "/dashboard/consultar-usuarios",
-            },
-          ],
-        },
+        // {
+        //   title: "Usuarios",
+        //   children: [
+        //     {
+        //       name: "Registrar nuevo usuario",
+        //       url: "/dashboard/registro-usuarios",
+        //     },
+        //     {
+        //       name: "Usuarios del sistema",
+        //       url: "/dashboard/consultar-usuarios",
+        //     },
+        //   ],
+        // },
       ],
       username: localStorage.getItem("username") || "none",
       name: "",
       email: "",
       username: "",
+      isModalVisible: false,
+      is_auth: Boolean,
     };
   },
   methods: {
     sendToModule: function (subitem) {
-      console.log(subitem);
       let urlName = subitem.url;
-      console.log(urlName);
       this.$router.push({ name: subitem.url });
     },
 
@@ -149,10 +152,17 @@ export default {
     created: async function () {
       this.getUserData;
     },
+
+    verifyAuth: function () {
+      this.is_auth = localStorage.getItem("isAuth") || false;
+      if (this.is_auth == false) this.$router.push({ name: "logIn" });
+      else this.$router.push({ name: "mainLayout" });
+    },
   },
 
   beforeMount() {
     this.getUserData();
+    this.verifyAuth()
   },
 };
 </script>

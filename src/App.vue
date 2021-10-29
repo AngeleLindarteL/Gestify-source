@@ -7,13 +7,11 @@
 </template>
 
 <script>
-
 export default {
   name: "App",
 
   methods: {
     logInSuccess: function (data) {
-      console.log("Login exitoso", data);
       localStorage.setItem("isAuth", true);
       localStorage.setItem("username", data.username);
       localStorage.setItem("token_access", data.token_access);

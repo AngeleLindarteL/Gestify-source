@@ -81,12 +81,13 @@ button svg {
 }
 
 .cancel-btn {
-    background: var(--ges-red-opacity);
-    color: var(--ges-dark-red);
+    background: white;
+    color: var(--ges-red);
+    border: 1px solid var(--ges-red);
 }
 
 .cancel-btn:hover {
-    background-color: var(--ges-dark-red);
+    background-color: var(--ges-red);
     color: white;
     box-shadow: 0 0 6px 2px var(--ges-red-opacity);
     cursor: pointer;
@@ -147,4 +148,84 @@ button svg {
 .header-back-button__link:active {
     background-color: white;
     box-shadow: none;
+}
+
+.close-btn {
+    background: transparent;
+    color: var(--ges-red);
+    padding: 5px;
+    margin-bottom: 0;
+}
+
+.edit-btn {
+    background: transparent;
+    color: var(--ges-purple);
+    padding: 5px;
+    margin-bottom: 0;
+}
+
+.edit-btn svg,
+.close-btn svg {
+    margin-right: 0;
+}
+
+.close-btn:hover {
+    background-color: var(--ges-red-light-opacity);
+    color: var(--ges-red);
+    box-shadow: 0 0 6px 2px var(--ges-red-opacity);
+    cursor: pointer;
+}
+
+.edit-btn:disabled:hover,
+.close-btn:disabled:hover {
+    cursor: inherit;
+}
+
+.close-btn:not(:disabled):not(.disabled):focus,
+.close-btn:not(:disabled):not(.disabled).focus,
+.close-btn:focus {
+    box-shadow: 0 0 3px 1px var(--ges-red-opacity);
+    background-color: var(--ges-red-light-opacity);
+    color: var(--ges-red);
+}
+
+.close-btn:not(:disabled):not(.disabled):active,
+.close-btn:not(:disabled):not(.disabled).active,
+.close-btn:active {
+    background-color: var(--ges-red-light-opacity);
+    box-shadow: 0 0 4px 2px var(--ges-red-opacity);
+    color: var(--ges-red);
+}
+
+.edit-btn:hover {
+    background-color: var(--ges-lighteen-purple);
+    color: var(--ges-purple);
+    box-shadow: 0 0 6px 2px var(--ges-lighteen-purple);
+    cursor: pointer;
+}
+
+.edit-btn:not(:disabled):not(.disabled):focus,
+.edit-btn:not(:disabled):not(.disabled).focus,
+.edit-btn:focus {
+    box-shadow: 0 0 3px 1px var(--ges-lighteen-purple);
+    background-color: var(--ges-lighteen-purple);
+    color: var(--ges-purple);
+}
+
+.edit-btn:not(:disabled):not(.disabled):active,
+.edit-btn:not(:disabled):not(.disabled).active,
+.edit-btn:active {
+    background-color: var(--ges-lighteen-purple);
+    box-shadow: 0 0 4px 2px var(--ges-lighteen-purple);
+    color: var(--ges-purple);
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+.primary-btn--search {
+    align-self: center;
+    margin-left: 16px !important;
 }
