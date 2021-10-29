@@ -67,6 +67,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost",
     "http://localhost:8080",
     "http://127.0.0.1:9000",
+    "https://gestify-fe.herokuapp.com/"
 ]
 REST_FRAMEWORK = {
             'DEFAULT_PERMISSION_CLASSES': (
